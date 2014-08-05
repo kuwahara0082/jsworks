@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Array-チェックテスト</title>
+<script>
+var list = [ 1, 2, 3, 4, 5, 6, 7 ];
+
+// すべての要素が指定した条件を満たすかどうか調べる。
+var result_1 = list.every(function(element) {
+    return element < 5;
+});
+var result_2 = list.every(function(element) {
+    return element < 10;
+});
+result_1, result_2; // false, true
+
+// 1つでも条件を満たす要素が存在するかどうか調べる。
+var result_3 = list.some(function() {
+    return element == 5;
+});
+var result_4 = list.some(function() {
+    return element == 10;
+});
+result_3, result_4; // true, false
+</script>
+</head>
+<body>
+</body>
+</html>

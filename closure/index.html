@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>クロージャ</title>
+<script>
+var module = (function() {
+  var count = 0; //カプセル化された変数
+  return {
+    increment: function() {
+      count++;
+    },
+    show: function() {
+      console.log(count);
+    }
+  };
+})();
+module.show(); // 0
+module.increment();
+module.show();
+console.log(count);// undefined
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>スコープ</title>
+<script>
+function hello(){
+    console.log(msg);//undefined
+    var msg = "こんにちは!!";
+    msg2 = "おはようございます！";
+    return msg;
+}
+alert(hello());
+console.log(msg2);//おはようございます！（グローバル変数の為）
+</script>
+</head>
+<body>
+</body>
+</html>

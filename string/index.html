@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Stringメソッドの確認</title>
+<script>
+var sampleStr = "テキストテキスト";
+console.log(sampleStr.indexOf("テ"));
+console.log(sampleStr.substr(0,3));
+console.log(sampleStr.split("キ"));
+console.log(sampleStr.replace("テキ","トー"));//1箇所しか置換されない
+console.log(sampleStr.split("テキ").join("トー"));//全置換
+var num = 123;
+console.log(num.toString());
+document.write(sampleStr.length);
+document.write(sampleStr.bold());
+document.write(sampleStr.italics());
+document.write(sampleStr.fixed());
+document.write(sampleStr.big());
+document.write(sampleStr.small());
+document.write(sampleStr.blink());
+document.write(sampleStr.strike());
+document.write(sampleStr.sup());
+document.write(sampleStr.sub());
+document.write(sampleStr.fontcolor("red"));
+document.write(sampleStr.fontsize(7));
+document.write(sampleStr.anchor("hoge"));
+document.write(sampleStr.link("index.html"));
+</script>
+</head>
+<body>
+</body>
+</html>
