@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>onBlurイベント</title>
+</head>
+<script type="text/javascript">
+function isNum(obj){
+    /* 入力値 */
+    var str=obj.value;
+    /* 数値以外の文字列が含まれていた場合 */
+    if(str.match(/[^0-9]/g)){
+        /* アラート表示 */
+        alert (str.match(/[^0-9]/g)+'\n\n年齢は半角数値で入力して下さい');
+        /* テキストボックスを空にする */
+        obj.value="";
+        return false;
+    }
+}
+</script>
+</head>
+<body onload="init()">
+<form action="#">
+年齢：<input type="text" value="" onblur="isNum(this)" size="3" maxlength="2" /> 歳<br />
+※半角数値以外を入力するとフォーカスが外れた時にアラートが表示されます。
+</form>
+</body>
+</html>
+</body>
+</html>

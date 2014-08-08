@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>クッキー</title>
+<script>
+// クッキー保存　setCookie(クッキー名, クッキーの値, クッキーの有効日数)
+function setCookie(c_name,value,expiredays){
+    // pathの指定
+    var path = location.pathname;
+    // pathをフォルダ毎に指定する場合のIE対策
+    var paths = new Array();
+    paths = path.split("/");
+    if(paths[paths.length-1] != ""){
+        paths[paths.length-1] = "";
+        path = paths.join("/");
+    }
+    // 有効期限の日付
+    var extime = new Date().getTime();
+    var cltime = new Date(extime + (60*60*24*1000*expiredays));
+    var exdate = cltime.toUTCString();
+    // クッキーに保存する文字列を生成
+    var s="";
+    s += c_name +"="+ escape(value);// 値はエンコードしておく
+    s += "; path="+ path;
+    if(expiredays){
+        s += "; expires=" +exdate+"; ";
+    }else{
+        s += "; ";
+    }
+    // クッキーに保存
+    document.cookie=s;
+}
+// クッキーをセット
+setCookie('sample','hoge',7);
+//クッキー取得
+function getCookie(key){
+    // Cookieから値を取得する
+    var cookieString = document.cookie;
+    // 要素ごとに ";" で区切られているので、";" で切り出しを行う
+    var cookieKeyArray = cookieString.split(";");
+    // 要素分ループを行う
+    for (var i=0; i<cookieKeyArray.length; i++) {
+        var targetCookie = cookieKeyArray[i];
+        // 前後のスペースをカットする
+        var targetCookie = targetCookie.replace(/^\s+|\s+$/g, "");
+        var valueIndex = targetCookie.indexOf("=");
+        if (targetCookie.substring(0, valueIndex) == key) {
+        // キーが引数と一致した場合、値を返す
+            return alert(unescape(targetCookie.slice(valueIndex + 1)));
+        }
+    }
+    return "";
+
+}
+getCookie("sample");
+//クッキー削除
+function removeCookie(key){
+    //日付データを作成する
+    var date1 = new Date();  
+    //1970年1月1日00:00:00の日付データをセットする
+    date1.setTime(0);
+    //有効期限を過去にして書き込む
+    document.cookie = key + "=;expires=" + date1.toGMTString();
+    //ページを再読み込みする
+    //location.reload();
+}
+removeCookie("sample");
+</script>
+</head>
+<body>
+<input type="button" onclick="setCookie('testName');" value="クッキーセット（sample=hoge;expire=7日後）">
+<input type="button" onclick="getCookie('testName');" value="クッキー取得（sample）">
+<input type="button" onclick="removeCookie('testName');" value="クッキー削除（sample）">
+</body>
+</html>
