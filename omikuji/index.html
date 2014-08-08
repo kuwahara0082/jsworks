@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>デバッグテスト</title>
+<script>
+function getOmikuji(){
+    var omikuji = ["大吉","中吉","凶","大凶","末吉","吉"];
+    var num = Math.floor(Math.random() * omikuji.length);
+    return omikuji[num];
+}
+
+function displayOmikuji(){
+    var omikuji = '';
+    omikuji = getOmikuji();
+
+    if(omikuji == "大吉") {
+        omikuji += "！おめでとう！！";
+    }
+    document.getElementById('result').innerHTML = omikuji; 
+}
+
+</script>
+</head>
+<body>
+    <input type="button" value="おみくじを引く" onclick="displayOmikuji();" />
+    <div id="result"></div>
+</body>
+</html>
